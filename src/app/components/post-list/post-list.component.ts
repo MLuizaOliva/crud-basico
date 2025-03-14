@@ -20,6 +20,7 @@ import { Post } from '../../types/post';
           <div class="post-card">
             <h3>{{ post.title }}</h3>
             <p class="author">Autor: {{ post.author }}</p>
+            <p class="message">{{ post.message }}</p>
             <div class="actions">
               <button class="btn-edit" [routerLink]="['/posts/edit', post.id]">
                 Editar
@@ -81,6 +82,13 @@ import { Post } from '../../types/post';
       color: #666;
       font-size: 0.9rem;
       margin-bottom: 1rem;
+    }
+
+    .message {
+      color: #444;
+      margin: 1rem 0;
+      line-height: 1.5;
+      white-space: pre-wrap;
     }
 
     .actions {

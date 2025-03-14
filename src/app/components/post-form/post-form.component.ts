@@ -23,9 +23,29 @@ import { PostService } from '../../services/post.service';
           <input id="author" type="text" formControlName="author">
         </div>
 
+        <div class="form-group">
+          <label for="message">Mensagem:</label>
+          <textarea 
+            id="message" 
+            formControlName="message"
+            placeholder="Digite sua mensagem"
+            rows="4">
+          </textarea>
+        </div>
+
         <div class="actions">
-          <button type="submit" [disabled]="postForm.invalid">Salvar</button>
-          <button type="button" (click)="cancel()">Cancelar</button>
+          <button 
+            type="submit" 
+            class="btn-primary"
+            [disabled]="postForm.invalid">
+            {{ isEditing ? 'Atualizar' : 'Criar' }}
+          </button>
+          <button 
+            type="button" 
+            class="btn-secondary"
+            (click)="cancel()">
+            Cancelar
+          </button>
         </div>
       </form>
     </div>
@@ -65,6 +85,21 @@ import { PostService } from '../../services/post.service';
     button[disabled] {
       background-color: #ccc;
     }
+    textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      resize: vertical;
+      min-height: 100px;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: #4CAF50;
+      box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+    }
   `]
 })
 export class PostFormComponent implements OnInit {
@@ -75,7 +110,8 @@ export class PostFormComponent implements OnInit {
 
   postForm: FormGroup = this.fb.group({
     title: ['', Validators.required],
-    author: ['', Validators.required]
+    author: ['', Validators.required],
+    message: ['', Validators.required]
   });
 
   isEditing = false;

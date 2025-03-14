@@ -11,7 +11,7 @@ import { Post } from '../../types/post';
   template: `
     <div class="container">
       <div class="header">
-        <h2>Lista de Posts</h2>
+        <h2>Lista de Tarefas </h2>
         <button class="btn-new" routerLink="/posts/new">Novo Post</button>
       </div>
 
